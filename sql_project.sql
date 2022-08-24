@@ -98,7 +98,15 @@ SELECT COUNT(DISTINCT COUNTRY) COUNTRY
 FROM CUSTOMERS;
 
 -- LIST OF CUSTOMERS THAT DO NOT HAVE A SALES REP ASSIGNED TO THEM
-SELECT Customer_ID, Company, First_Name, Last_Name, City, Country, Sales_Rep_ID, credit_limit FROM Customers 
+SELECT Customer_ID, 
+       Company, 
+       First_Name, 
+       Last_Name, 
+       City, 
+       Country, 
+       Sales_Rep_ID, 
+       credit_limit 
+FROM Customers 
 WHERE sales_rep_id IS NULL;
 
 -- COUNTRIES AND NUMBER OF ORDERS BETWEEN 2003 AND 2005 ( USA toping the list with 112 orders)
@@ -119,7 +127,7 @@ ON e.Reports_To = em.Employee_ID;
 
 -- JOINING THE EMPLOYEES TABLE WITH THE OFFICES TABLE TO SEE THE CITY, STATE AND ADDRESS WHERE EACH EMPLOYEE WORKS
 SELECT e.employee_ID, 
-	   e.First_Name, 
+       e.First_Name, 
        e.Last_Name,
        e.job_title,
        o.city,
@@ -159,7 +167,7 @@ WHERE status <> 'shipped';
 
 -- LIST OF PRODUCTS ORDERED BY CUSTOMERS
 SELECT od.product_id, 
-	   od.order_id, 
+       od.order_id, 
        o.order_date, 
        od.quantity_ordered, 
        od.unit_price, 
@@ -174,7 +182,7 @@ ORDER BY order_id;
 
 -- LIST OF CUSTOMERS AND ORDERS THAT HAS BEEN SHIPPED, CHEQUE NUMBER, PAYMENT DATE AND AMOUNT
 SELECT c.customer_ID, 
-	   c.first_name, 
+       c.first_name, 
        c.last_name, 
        o.order_id, 
        o.order_date, 
@@ -192,7 +200,7 @@ ORDER BY customer_ID;
 
 -- TOTAL LIST OF SALES FOR THE YEAR 2003
 SELECT customer_id, 
-	   payment_date,
+       payment_date,
        amount
 FROM payments
 WHERE payment_date <= '2003-12-31';
@@ -209,7 +217,7 @@ WHERE payment_date <= '2003-12-31';
 
 -- TOTAL LIST OF SALES FOR THE YEAR 2004
 SELECT customer_id, 
-	   payment_date, 
+       payment_date, 
        amount
 FROM payments 
 WHERE payment_date BETWEEN '2004-01-01' AND '2004-12-31';
@@ -243,8 +251,8 @@ WHERE payment_date BETWEEN '2005-01-01' AND '2005-12-31';
 
 -- CUSTOMERS AND SALES REP ASSIGNED TO THEM
 SELECT c.customer_id,
-	   c.first_name,
-	   c.last_name, 
+       c.first_name,
+       c.last_name, 
        c.company, 
        c.city, 
        c.country, 
@@ -255,7 +263,7 @@ ON c.sales_rep_id = e.employee_id;
 
 -- LIST OF PRODUCTS ORDERED BY CUSTOMERS, PURCHASE PRICE, SALE PRICE AND PROFIT
 SELECT p.product_id, 
-	   p.product_name, 
+       p.product_name, 
        pl.product_line, 
        p.quantity_in_stock, 
        p.purchase_price, 
@@ -293,7 +301,7 @@ ALTER TABLE productlines MODIFY product_descripton VARCHAR (5000) AFTER product_
 
 -- product with most orders
 SELECT od.order_id,
-	   p.product_line,
+       p.product_line,
        p.product_name,
        od.quantity_ordered,
        o.order_date
